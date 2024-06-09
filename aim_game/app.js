@@ -17,6 +17,7 @@ timeList.addEventListener('click', event => {
     time = parseInt(event.target.getAttribute('data-time'));
     screens[1].classList.add('up');
     startGame();
+    winTheGame(); // сама ловит круги
   }
 })
 
@@ -81,4 +82,15 @@ function getRandomNumber(min, max) {
 
 function getRandomColor() {
   return colors[Math.floor(Math.random() * colors.length)];
+}
+
+// Автоматически ловит круги
+function winTheGame() {
+  function kill() {
+    const circle = document.querySelector('.circle');
+    if (circle) {
+      circle.click();
+    }
+  }
+  setInterval(kill, 100);
 }
